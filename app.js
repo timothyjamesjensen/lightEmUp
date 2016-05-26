@@ -8,7 +8,7 @@ app.controller('app-ctrl', function($scope, $http) {
             url: 'http://192.168.0.20:3000/light'
         };
         $http(req);
-        console.log("on");
+        console.log("http switched");
     };
 
 });

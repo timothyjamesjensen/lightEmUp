@@ -16,7 +16,7 @@ app.post('/light', function(req, res) { // when the post request for /on is call
 });
 
 app.listen(3000, function () { // port number
-    console.log('Example app listening on port 3000!');
+    console.log('App listening on port 3000!');
 
     button.watch(function(err, value) {
       if (value == 1) lightSwitch();
