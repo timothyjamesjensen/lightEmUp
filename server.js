@@ -8,7 +8,7 @@ app.get('/', function (req, res) { // will be used to server a static optional h
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/light', function(req, res) { // when the post request for /on is called
+app.post('/light', function(req, res) { // when the post request for /on is called
     console.log('switch flipped');
     lightSwitch();
 });
@@ -20,33 +20,36 @@ app.listen(3000, function () { // port number
         console.log('button has been pressed!');
         lightSwitch();
     });
-    gpio.setup(23, gpio.DIR_IN, gpio.EDGE_BOTH);
+    gpio.setup(15, gpio.DIR_IN, gpio.EDGE_BOTH);
 
     console.log('Listening for changes on channel 23');
 
-    gpio.setup(2, gpio.DIR_OUT, write);
+//    gpio.setup(3, gpio.DIR_OUT, switchOn);
     console.log('Channel 2 setup');
-    gpio.setup(3, gpio.DIR_OUT, write);
-    console.log('Channel 3 setup');
+    //gpio.setup(3, gpio.DIR_OUT, write);
+    //console.log('Channel 3 setup');
 });
 
 
 var lightSwitch = function() {
-    light == 'on' ? switchOn() : switchOff();
+    //light == 'on' ? switchOn() : switchOff();
+    //switchOn();
+    gpio.setup(3, gpio.DIR_OUT, switchOn);
 };
 
 var switchOn = function() {
     light = 'on';
-    gpio.write(2, true, function(err) {
+    //gpio.setup(3, gpio.DIR_OUT, switchOn);
+    gpio.write(3, true, function(err) {
         if (err) throw err;
         console.log('pin 2 set to true');
     });
-    gpio.write(3, true, function(err) {
-        if (err) throw err;
-        console.log('pin 3 set to true');
-    });
+    //gpio.write(3, true, function(err) {
+    //    if (err) throw err;
+    //    console.log('pin 3 set to true');
+    //});
 };
-
+/*
 var switchOff = function() {
     light = 'off';
     gpio.write(2, false, function(err) {
@@ -58,3 +61,4 @@ var switchOff = function() {
         console.log('pin 3 set to false');
     });
 };
+*/
