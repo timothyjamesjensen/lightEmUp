@@ -29,7 +29,7 @@ app.listen(3000, function () { // port number
 
 
 var lightSwitch = function() {
-    light == 'on' ? gpio.setup(3, gpio.DIR_OUT, switchOn) : gpio.setup(3, gpio.DIR_OUT, switchOff);
+    light == 'on' ? gpio.setup(3, gpio.DIR_OUT, switchOff) : gpio.setup(3, gpio.DIR_OUT, switchOn);
 };
 
 var switchOn = function() {
