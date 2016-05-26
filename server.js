@@ -6,6 +6,10 @@ app.get('/', function (req, res) { //will be used to server a static optional ht
     res.sendFile(__dirname + '/index.html');
 });
 
-var server = app.listen(3000, function () { //port number
+app.get('/light', function(req, res) { //when the post request for /on is called
+    console.log('switch flipped');
+});
+
+app.listen(3000, function () { //port number
     console.log('Example app listening on port 3000!');
 });
