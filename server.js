@@ -24,41 +24,26 @@ app.listen(3000, function () { // port number
 
     console.log('Listening for changes on channel 23');
 
-//    gpio.setup(3, gpio.DIR_OUT, switchOn);
     console.log('Channel 2 setup');
-    //gpio.setup(3, gpio.DIR_OUT, write);
-    //console.log('Channel 3 setup');
 });
 
 
 var lightSwitch = function() {
-    //light == 'on' ? switchOn() : switchOff();
-    //switchOn();
-    gpio.setup(3, gpio.DIR_OUT, switchOn);
+    light == 'on' ? gpio.setup(3, gpio.DIR_OUT, switchOn) : gpio.setup(3, gpio.DIR_OUT, switchOff);
 };
 
 var switchOn = function() {
     light = 'on';
-    //gpio.setup(3, gpio.DIR_OUT, switchOn);
     gpio.write(3, true, function(err) {
         if (err) throw err;
-        console.log('pin 2 set to true');
+        console.log('pin 3 set to true');
     });
-    //gpio.write(3, true, function(err) {
-    //    if (err) throw err;
-    //    console.log('pin 3 set to true');
-    //});
 };
-/*
+
 var switchOff = function() {
     light = 'off';
-    gpio.write(2, false, function(err) {
-        if (err) throw err;
-        console.log('pin 2 set to false');
-    });
     gpio.write(3, false, function(err) {
         if (err) throw err;
         console.log('pin 3 set to false');
     });
 };
-*/
